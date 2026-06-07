@@ -1,0 +1,42 @@
+# CI workflow — used from Lab 7 onward.
+# Lab 7: validates code and posts pass/fail to Slack.
+# Lab 8-10: extend this with terraform plan/apply and AWS OIDC auth.
+#
+# PREREQUISITE: add a repo secret named SLACK_WEBHOOK_URL
+#   (Settings -> Secrets and variables -> Actions). Never hardcode the webhook.
+
+name: CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # --- Replace this with real validation as labs progress ---
+      # Lab 7: a simple check (terraform fmt, bash lint, etc.)
+      # Lab 8+: terraform plan against the lab-10 terraform/ dir
+      - name: Validate
+        run: |
+          echo "Running validation..."
+          # terraform fmt -check
+          # terraform validate
+          echo "OK"
+
+      # --- Slack notification (Lab 7) ---
+      # if: always() ensures FAILURES still report — without it, red builds go silent.
+      - name: Notify Slack
+        if: always()
+        uses: slackapi/slack-github-action@v2.0.0
+        with:
+          webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
+          webhook-type: incoming-webhook
+          payload: |
+            {
+              "text": "CI on ${{ github.repository }} — *${{ job.status }}* on `${{ github.ref_name }}` by ${{ github.actor }}"
+            }
