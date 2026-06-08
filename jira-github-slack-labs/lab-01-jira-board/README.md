@@ -22,19 +22,24 @@ Get comfortable in Jira so the rest stops feeling foreign. No integration yet �
 ## My work log (fill this in as you go)
 
 ### What I did
-- 
+- - Created a Jira Cloud free-tier site (basitusa2020.atlassian.net).
+- Made a team-managed project "PORTFOLIO" (key: POR) using the Kanban template.
+- Cleaned the default template: removed service-desk work types (Incident, Service Request, Support), kept Task; set statuses to To Do / In Progress / Done.
+- Added 8 issues mapping to my real AWS-Cloudflare-Security-Lab project (5 already-built → Done, 3 future enhancements → To Do).
 
 ### Commands / config that actually worked
 ```
 (paste the real commands, YAML, or rule config here)
 ```
-
-### Screenshots
-<!-- drop images in ./screenshots and reference them: -->
-<!-- ![description](screenshots/your-screenshot.png) -->
+No CLI — all done in the Jira web UI.
+- Template choice: Kanban (continuous flow), team-managed.
 
 ### Gotchas I hit
-- 
+- Landed on a service-management template by accident first (had Incident/Service Request/Waiting for Customer). Trashed it and recreated as Kanban.
+- The project key is what matters for GitHub linking, NOT the display name. URL showed "KAN" early but actual issue keys are POR-1...POR-8. Always confirm the key from a card, not the URL.
+- Renamed "Resolved" → "Done" because smart commits (#close) and automation target a status literally named "Done".
+
 
 ### One-line summary for the Friday README / LinkedIn post
 > 
+Built a real Kanban board in Jira from my AWS-Cloudflare-Security-Lab project — 8 tickets, proper To Do/In Progress/Done flow.
