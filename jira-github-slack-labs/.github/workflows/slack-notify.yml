@@ -1,0 +1,37 @@
+name: Slack CI Notification
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  notify-slack:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Send Slack notification
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        run: |
+          curl -X POST -H 'Content-type: application/json' \
+          --data '{
+            "text": "*GitHub Actions CI Alert* :rocket:",
+            "attachments": [
+              {
+                "color": "good",
+                "fields": [
+                  {"title": "Repository", "value": "${{ github.repository }}", "short": true},
+                  {"title": "Branch", "value": "${{ github.ref_name }}", "short": true},
+                  {"title": "Triggered by", "value": "${{ github.actor }}", "short": true},
+                  {"title": "Status", "value": "SUCCESS", "short": true},
+                  {"title": "Commit", "value": "${{ github.sha }}", "short": false}
+                ]
+              }
+            ]
+          }' \
+          $SLACK_WEBHOOK_URL
