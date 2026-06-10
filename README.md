@@ -8,8 +8,7 @@ A one-week, hands-on build connecting **Jira** (work tracking), **GitHub** (code
 ## The three integration loops
 
 1. **GitHub → Jira** — branches, commits, and PRs surface on the ticket; commit messages transition tickets (smart commits).
-2. **GitHub Actions → Slack** — CI/CD pipeline posts pass/fail into a channel.
-3. **Jira ↔ Slack** — ticket activity shows in Slack, and ChatOps triggers workflows back.
+2. **Jira ↔ Slack** — ticket activity shows in Slack, and ChatOps triggers workflows back.
 
 ## Schedule (2 labs/day)
 
@@ -31,34 +30,8 @@ A one-week, hands-on build connecting **Jira** (work tracking), **GitHub** (code
 | 04 | [Jira automation](lab-04-jira-automation/) | Event-driven rules |
 | 05 | [Jira↔Slack](lab-05-jira-slack/) | Notifications + create from Slack |
 | 06 | [Slack webhook](lab-06-slack-webhook/) | The alerting primitive |
-| 07 | [Actions→Slack](lab-07-actions-slack/) | CI notifications |
-| 08 | [Full loop](lab-08-full-loop/) | End-to-end traceability |
-| 09 | [ChatOps](lab-09-chatops/) | Trigger deploys from Slack |
-| 10 | [AWS capstone](lab-10-aws-capstone/) | Secure deploy, all 3 tools |
+| 07 | [Full loop](lab-08-full-loop/) | End-to-end traceability |
 
-## Capstone architecture
-
-<!-- Friday: drop an architecture diagram here -->
-<!-- ![architecture](lab-10-aws-capstone/screenshots/architecture.png) -->
-
-```
-Jira ticket  ──►  branch (PORTFOLIO-X-...)  ──►  Terraform code  ──►  PR
-                                                                       │
-                              GitHub Actions: terraform plan ──────────┤
-                                                                       ▼
-                                                          Slack #ci-alerts (result)
-                                                                       │
-                                            merge to main ─────────────┤
-                                                                       ▼
-                              Actions: terraform apply (AWS via OIDC) ──► AWS
-                                                                       │
-                                          Jira auto-transition to Done ┘
-```
-
-## Key takeaways
-
-<!-- Friday: 3-5 bullets of what you learned, written in your own words -->
-- 
 
 ## Tools & cost
 
