@@ -18,7 +18,6 @@ A one-week, hands-on build connecting **Jira** (work tracking), **GitHub** (code
 | Tue | 3–4  | Smart commits + Jira automation |
 | Wed | 5–6  | Jira↔Slack + Slack webhook |
 | Thu | 7–8  | Actions→Slack + full loop |
-| Fri | 9–10 | ChatOps + AWS capstone |
 
 ## Labs
 
